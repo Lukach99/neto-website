@@ -1,6 +1,7 @@
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import "./index.scss";
+import LangChoice from "./LangChoice";
 
 const Header = () => {
   return (
@@ -10,6 +11,9 @@ const Header = () => {
       </div>
       <div className="header-navbar">
         <Navbar></Navbar>
+      </div>
+      <div className="header-lang">
+        <LangChoice></LangChoice>
       </div>
     </div>
   );

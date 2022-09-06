@@ -1,0 +1,18 @@
+.lang{
+    display: flex;
+
+    &-btn{
+        border: none;
+        background-color: transparent;
+        font-size: 16px;
+        font-weight: 400;
+        color: black;
+
+    }
+
+
+}
+
+.active{
+    color: #d31d4b;
+}

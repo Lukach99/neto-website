@@ -1,0 +1,33 @@
+.main-picture{
+    width: 100%;
+    height: 80vh;
+    background-image: url("https://assets.caisy.io/assets/c5b98fcc-5e23-4df0-a5cd-2a7527d26cff/auOkRmCA7i/e697978e-fefc-40b7-96bc-2d6e08655cadd75a8d1fff3e49f7aea027be33306018edbf286bc1124d7d801445e04a2555d50150102V8Zarge009.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    
+    &::before {
+        content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(to bottom right,black,black);
+            opacity: .4; 
+            z-index: 0;
+      }
+
+    &-h1{
+        padding: 20px 30px;
+        z-index: 20;
+        border: 5px solid white;
+        color: white;
+        font-size: 50px;
+        text-shadow: 2px 2px 11px #000000;
+        box-shadow:  2px 2px 11px #000000;
+    }
+}

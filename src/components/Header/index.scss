@@ -1,11 +1,14 @@
 .header{
     display: flex;
+    /* position: fixed; */
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
-    
+    padding: 5px 0;
+    background-color: white;
+    /* width: 100vw; */
     box-shadow: inset 0 -7px 9px -7px rgba(0,0,0,0.4);
-    
+    z-index: 20;
+
     &-logo{
         flex: 20%;
         display: flex;
@@ -13,7 +16,13 @@
     }
 
     &-navbar{
-        flex: 80%;
+        flex: 60%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &-lang{
+        flex: 20%;
         display: flex;
         justify-content: center;
     }

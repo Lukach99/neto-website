@@ -1,0 +1,28 @@
+.footer{
+    
+    background-color: #303030;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 50px 10%;
+
+    &-contact{
+        display: flex;
+        flex: 1;
+
+        h4{
+            margin: 25px 0 10px;
+        }
+
+        p{
+            margin: 10px 0;
+        }
+        &-2{
+            margin-left: 50px;
+        }
+    }
+
+    &-map{
+        flex: 1;
+    }
+}

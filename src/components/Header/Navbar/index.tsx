@@ -1,16 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { LangContext } from "../../../context/langContext";
 import "./index.scss";
 
 const Navbar = () => {
+  const { lang, setLang } = useContext(LangContext);
+
   return (
     <div className="navbar">
-      <Link to="/naslovnica">Naslovnica</Link>
-      <Link to="/kuhinje">Kuhinje</Link>
-      <Link to="/ormari">Ormari</Link>
-      <Link to="/spavacasoba">Spavaća soba</Link>
-      <Link to="/kupaonica">Kupaonica</Link>
-      <Link to="/onama">O nama</Link>
-      <Link to="/kontakt">Kontakt</Link>
+      <Link to="/naslovnica">{lang === "hr" ? "Naslovnica" : "Home"}</Link>
+      <Link to="/galerija">{lang === "hr" ? "Galerija" : "Gallery"}</Link>
+      <Link to="/kontakt">{lang === "hr" ? "Kontakt" : "Contact"}</Link>
     </div>
   );
 };
