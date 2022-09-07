@@ -1,0 +1,51 @@
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, 0.8);
+  z-index: 10;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-width: 450px;
+  min-height: 200px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+
+  -webkit-box-shadow: 10px 10px 37px -19px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 10px 10px 37px -19px rgba(0, 0, 0, 0.22);
+  box-shadow: 10px 10px 37px -19px rgba(0, 0, 0, 0.22);
+
+  animation: 0.5s 1 normal fadeIn;
+
+  &-btn {
+    font-size: 25px;
+    padding: 20px;
+    margin: 0 20px;
+  }
+
+  &-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}

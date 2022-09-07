@@ -1,7 +1,7 @@
 import MainPicture from "./MainPicture";
 import Services from "./Services";
 
-const Main = () => {
+const MainPage = () => {
   return (
     <div>
       <MainPicture />
@@ -10,4 +10,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainPage;

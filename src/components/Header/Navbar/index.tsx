@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { LangContext } from "../../../context/langContext";
 import "./index.scss";
 
@@ -8,9 +8,11 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Link to="/naslovnica">{lang === "hr" ? "Naslovnica" : "Home"}</Link>
-      <Link to="/galerija">{lang === "hr" ? "Galerija" : "Gallery"}</Link>
-      <Link to="/kontakt">{lang === "hr" ? "Kontakt" : "Contact"}</Link>
+      <NavLink to="/naslovnica">
+        {lang === "hr" ? "Naslovnica" : "Home"}
+      </NavLink>
+      <NavLink to="/galerija">{lang === "hr" ? "Galerija" : "Gallery"}</NavLink>
+      <NavLink to="/kontakt">{lang === "hr" ? "Kontakt" : "Contact"}</NavLink>
     </div>
   );
 };
