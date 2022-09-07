@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import "./index.scss";
 
@@ -6,9 +6,13 @@ const modalContainer: any = document.getElementById("overlay");
 
 const GalleryModal = ({ modalHandler, imageIndex, imageList }: Props) => {
   const [imageIndexActive, setImageIndexActive] = useState(imageIndex);
-
+  const [animationClasses, setAnimationClasses] = useState("popInAnimation");
   const closeModal = () => {
-    modalHandler(false);
+    setAnimationClasses("popOutAnimation");
+
+    setTimeout(() => {
+      modalHandler(false);
+    }, 300);
   };
 
   const imageLeftHandler = () => {
@@ -27,9 +31,18 @@ const GalleryModal = ({ modalHandler, imageIndex, imageList }: Props) => {
     }
   };
 
+  /* useEffect(() => {
+    setTimeout(() => {
+      setImageIndexActive((state) => state + 1);
+    }, 2000);
+  }, [imageIndexActive]);
+ */
   const modal = (
-    <div className="modal-container" onClick={closeModal}>
-      <div className="modal" onClick={(event) => event.stopPropagation()}>
+    <div className="modal-container " onClick={closeModal}>
+      <div
+        className={`modal ${animationClasses}`}
+        onClick={(event) => event.stopPropagation()}
+      >
         <button className="modal-btn" onClick={imageLeftHandler}>
           {"<"}
         </button>
