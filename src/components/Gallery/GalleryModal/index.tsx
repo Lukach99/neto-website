@@ -15,7 +15,8 @@ const GalleryModal = ({ modalHandler, imageIndex, imageList }: Props) => {
     }, 300);
   };
 
-  const imageLeftHandler = () => {
+  const imageLeftHandler = (event: any) => {
+    event.stopPropagation();
     if (imageIndexActive === 0) {
       setImageIndexActive(imageList.length - 1);
     } else {
@@ -23,7 +24,8 @@ const GalleryModal = ({ modalHandler, imageIndex, imageList }: Props) => {
     }
   };
 
-  const imageRightHandler = () => {
+  const imageRightHandler = (event: any) => {
+    event.stopPropagation();
     if (imageIndexActive === imageList.length - 1) {
       setImageIndexActive(0);
     } else {
@@ -39,19 +41,24 @@ const GalleryModal = ({ modalHandler, imageIndex, imageList }: Props) => {
  */
   const modal = (
     <div className="modal-container " onClick={closeModal}>
+      <p className="modal-container-imgCounter">{`${imageIndexActive + 1} / ${
+        imageList.length
+      }`}</p>
+      <button className="modal-container-closeBtn" onClick={closeModal}>
+        x
+      </button>
+
       <div
         className={`modal ${animationClasses}`}
         onClick={(event) => event.stopPropagation()}
       >
-        <button className="modal-btn" onClick={imageLeftHandler}>
+        <button className="modal-container-btn" onClick={imageLeftHandler}>
           {"<"}
         </button>
         <div className="modal-display">
-          <p>{`${imageIndexActive + 1}/${imageList.length}`}</p>
           <img src={imageList[imageIndexActive]} alt="" />
         </div>
-
-        <button className="modal-btn" onClick={imageRightHandler}>
+        <button className="modal-container-btn" onClick={imageRightHandler}>
           {">"}
         </button>
       </div>
