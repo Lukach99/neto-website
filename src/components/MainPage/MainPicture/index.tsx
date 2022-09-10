@@ -7,7 +7,9 @@ const MainPicture = () => {
   return (
     <div className="main-picture">
       <h1 className="main-picture-h1">
-        {lang === "hr" ? "Namještaj po mjeri" : "Custom made furniture"}
+        {lang === "hr"
+          ? "Dizajn i montaža  namještaja po mjeri"
+          : "Design and assembly of custom-made furniture"}
       </h1>
     </div>
   );

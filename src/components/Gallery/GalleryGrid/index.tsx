@@ -15,7 +15,7 @@ const pictures = [
   picture_one,
 ];
 
-const GalleryGrid = () => {
+const GalleryGrid = ({ imagesList }: Props) => {
   const [isModalActive, setIsModalActive] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -25,12 +25,10 @@ const GalleryGrid = () => {
     setImageIndex(index);
   };
 
-  console.log(imageIndex);
-
   return (
     <>
       <div className="galleryGrid">
-        {pictures.map((item: string, i) => (
+        {imagesList.map((item: string, i) => (
           <img
             key={i}
             src={item}
@@ -44,11 +42,15 @@ const GalleryGrid = () => {
         <GalleryModal
           modalHandler={setIsModalActive}
           imageIndex={imageIndex}
-          imageList={pictures}
+          imageList={imagesList}
         />
       )}
     </>
   );
+};
+
+type Props = {
+  imagesList: string[];
 };
 
 export default GalleryGrid;

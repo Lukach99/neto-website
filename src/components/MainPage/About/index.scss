@@ -1,0 +1,12 @@
+.about {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+
+  &-text {
+    font-size: 20px;
+    width: 60%;
+    text-align: center;
+    line-height: 40px;
+  }
+}

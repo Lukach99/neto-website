@@ -3,4 +3,84 @@
   align-items: center;
   flex-direction: column;
   padding-bottom: 100px;
+  margin-top: 50px;
+
+  &-title {
+    color: #d31d4b;
+    padding-bottom: 10px;
+  }
+  &-choice {
+    display: flex;
+
+    width: 50%;
+    justify-content: center;
+    padding: 20px 0;
+
+    &-btn {
+      position: relative;
+      flex: 1;
+      border: none;
+      background-color: transparent;
+      font-size: 18px;
+      color: #98989a;
+      letter-spacing: 1px;
+      padding: 10px 0;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        /* left: 0; */
+        bottom: 0;
+        background-color: #d31d4b;
+
+        height: 3px;
+        width: 0%;
+        transition: all 0.2s ease;
+
+        left: 50%; /*Add this*/
+        transform: translate(-50%, 0); /*Add this*/
+      }
+
+      &:hover::after {
+        width: 50%;
+        color: #000;
+      }
+    }
+
+    .active-choice {
+      color: #000;
+      &::after {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.error-message {
+  font-size: 18px;
+  margin: 100px 0;
+}
+
+.loading {
+  margin-top: 100px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #d31d4b 94%, #0000) top/11.5px
+      11.5px no-repeat,
+    conic-gradient(#0000 30%, #d31d4b);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - 11.5px),
+    #000 0
+  );
+  animation: spinner-c7wet2 1s infinite linear;
+}
+
+@keyframes spinner-c7wet2 {
+  100% {
+    transform: rotate(1turn);
+  }
 }

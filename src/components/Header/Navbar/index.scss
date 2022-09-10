@@ -17,21 +17,24 @@
       content: "";
       position: absolute;
       display: block;
-      left: 0;
+      /* left: 0; */
       bottom: 0;
       background-color: #d31d4b;
       height: 3px;
-      width: 100%;
-      opacity: 0;
-      transition: opacity 0.2s ease;
+      width: 0%;
+      opacity: 1;
+      transition: width 0.2s ease;
+
+      left: 50%; /*Add this*/
+      transform: translate(-50%, 0); /*Add this*/
     }
 
     &:hover::after {
-      opacity: 1;
+      width: 100%;
     }
 
     &.active::after {
-      opacity: 1;
+      width: 100%;
     }
   }
 }
