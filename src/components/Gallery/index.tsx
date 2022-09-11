@@ -1,37 +1,36 @@
 import "./index.scss";
 import GalleryGrid from "./GalleryGrid";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { LangContext } from "../../context/langContext";
 
 const DATABASE_BASE_URL =
   "http://neto-website-default-rtdb.europe-west1.firebasedatabase.app/";
 
 const choicesList = [
-  { hr: "Kuhinja", eng: "Kitchen" },
+  { hr: "Kuhinje", eng: "Kitchen" },
   { hr: "Ormari", eng: "Closets" },
-  { hr: "Spavaće sobe", eng: "Bedrooms" },
   { hr: "Ostalo", eng: "Others" },
 ];
 
 const Gallery = () => {
-  const [galleryType, setGalleryType] = useState("kuhinja");
-  const [imagesList, setImagesList] = useState<string[]>([]);
+  const [galleryType, setGalleryType] = useState("kuhinje");
+  const [imagesList, setImagesList] = useState<any>(null);
   const [error, setError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const { lang, setLang } = useContext(LangContext);
 
+  const imagesListMemo = useMemo(() => imagesList, [imagesList]);
+
   const fetchImages = useCallback(async () => {
     try {
-      const response = await fetch(
-        `${DATABASE_BASE_URL}images/${galleryType}.json`
-      );
+      const response = await fetch(`${DATABASE_BASE_URL}images.json`);
       const data = await response.json();
-
+      console.log("fetching");
       if (data === null) {
         throw new Error("Sorry, server not working.");
       } else {
-        setImagesList(Object.values(data));
+        setImagesList(data);
         setError(false);
         setIsLoading(false);
       }
@@ -46,9 +45,7 @@ const Gallery = () => {
 
   useEffect(() => {
     fetchImages();
-  }, [galleryType]);
-
-  console.log(error);
+  }, []);
 
   return (
     <div className="gallery">
@@ -81,7 +78,15 @@ const Gallery = () => {
           Sorry! Service is not available right now. Please try again later!
         </p>
       )}
-      {!error && <GalleryGrid imagesList={imagesList}></GalleryGrid>}
+      {!error && (
+        <GalleryGrid
+          imagesList={
+            imagesListMemo === null
+              ? []
+              : Object.values(imagesListMemo[galleryType])
+          }
+        ></GalleryGrid>
+      )}
     </div>
   );
 };
