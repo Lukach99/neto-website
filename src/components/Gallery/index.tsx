@@ -1,6 +1,13 @@
 import "./index.scss";
 import GalleryGrid from "./GalleryGrid";
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { LangContext } from "../../context/langContext";
 
 const DATABASE_BASE_URL =
@@ -17,10 +24,21 @@ const Gallery = () => {
   const [imagesList, setImagesList] = useState<any>(null);
   const [error, setError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
+  const ref: any = useRef(null);
 
   const { lang, setLang } = useContext(LangContext);
 
-  const imagesListMemo = useMemo(() => imagesList, [imagesList]);
+  const imagesListMemo: string[] = useMemo(() => {
+    if (imagesList && Object.keys(imagesList).includes(galleryType)) {
+      if (error) {
+        setError(false);
+      }
+      return Object.values(imagesList[galleryType]) || [];
+    }
+
+    setError(true);
+    return [];
+  }, [imagesList, galleryType]);
 
   const fetchImages = useCallback(async () => {
     try {
@@ -48,7 +66,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <div className="gallery">
+    <div ref={ref} className="gallery">
       <h2 className="gallery-title">
         {lang === "hr" ? "Naši radovi" : "Our work"}
       </h2>
@@ -75,18 +93,12 @@ const Gallery = () => {
 
       {error && (
         <p className="error-message">
-          Sorry! Service is not available right now. Please try again later!
+          {lang === "hr"
+            ? "Trenutno imamo tehničkih poteškoća. Molimo vas pokušajte kasnije!"
+            : "Sorry! Service is not available right now. Please try again later!"}
         </p>
       )}
-      {!error && (
-        <GalleryGrid
-          imagesList={
-            imagesListMemo === null
-              ? []
-              : Object.values(imagesListMemo[galleryType])
-          }
-        ></GalleryGrid>
-      )}
+      {!error && <GalleryGrid imagesList={imagesListMemo}></GalleryGrid>}
     </div>
   );
 };
