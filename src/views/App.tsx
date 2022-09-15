@@ -1,5 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesUp } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Gallery from "../components/Gallery";
 import Header from "../components/Header";
@@ -39,7 +42,7 @@ function App() {
           <Route path="*" element={<Navigate to="/naslovnica" replace />} />
           <Route path="/naslovnica" element={<MainPage />} />
           <Route path="/galerija" element={<Gallery />} />
-          {/* <Route path="/kontakt" element={<SignUp />} /> */}
+          <Route path="/kontakt" element={<Contact />} />
         </Routes>
 
         <Footer></Footer>
@@ -48,7 +51,7 @@ function App() {
           className="app-btn-gotop"
           style={{ display: visible ? "inline" : "none" }}
         >
-          {">>"}
+          <FontAwesomeIcon icon={faAnglesUp} />
         </button>
       </div>
     </LangContextProvider>

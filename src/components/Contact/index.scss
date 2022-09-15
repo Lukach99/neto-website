@@ -1,0 +1,25 @@
+.contact {
+  display: flex;
+
+  align-items: center;
+  margin-top: 50px;
+  flex-direction: column;
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 70px;
+    color: #d31d4b;
+  }
+
+  &-link {
+    text-align: center;
+    text-decoration: none;
+    color: #464646;
+    margin-bottom: 50px;
+    transition: color 0.2s ease-in;
+
+    &:hover {
+      color: #d31d4b;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 import About from "./About";
 import MainPicture from "./MainPicture";
-import Services from "./Services";
+import Work from "./Work";
 
 const MainPage = () => {
   return (
     <div>
       <MainPicture />
       <About></About>
-      <Services></Services>
+      <Work></Work>
     </div>
   );
 };

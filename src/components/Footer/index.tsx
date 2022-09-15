@@ -1,26 +1,31 @@
+import { useContext } from "react";
+import { LangContext } from "../../context/langContext";
 import "./index.scss";
 
 const Footer = () => {
+  const { lang, setLang } = useContext(LangContext);
   return (
     <div className="footer">
       <div className="footer-contact">
-        <div className="footer-contact-1">
-          <div>
-            <h4>Adresa</h4>
-            <p>Ul. Luke Baotića 25</p>
-            <p>21210, Solin</p>
-            <p>Hrvatska</p>
-          </div>
-          <div>
-            <h4>Radno vrijeme</h4>
-            <p>Pon-Pet: 08:00 - 16:00</p>
-            <p>Sub: 08:00 - 16:00</p>
-            <p>Ned: Ne radimo</p>
-          </div>
+        <div>
+          <h4>{lang === "hr" ? "Adresa" : "Adress"}</h4>
+          <p>Ul. Luke Baotića 27</p>
+          <p>21210, Solin</p>
+          <p>{lang === "hr" ? "Hrvatska" : "Croatia"}</p>
         </div>
-        <div className="footer-contact-2">
-          <h4>Kontakt</h4>
-          <p>Broj: 099/9999-999</p>
+        <div>
+          <h4>{lang === "hr" ? "Radno Vrijeme" : "Working Hours"}</h4>
+          <p>
+            {lang === "hr"
+              ? "Pon-Pet: 08:00 - 16:00"
+              : "Mon-Fri: 08:00 - 16:00"}
+          </p>
+          <p>{lang === "hr" ? "Sub: 08:00 - 16:00" : "Sat: 08:00 - 16:00"}</p>
+          <p>{lang === "hr" ? "Ned: Ne radimo" : "Sun: We don't work"}</p>
+        </div>
+        <div>
+          <h4>{lang === "hr" ? "Kontakt" : "Contact"}</h4>
+          <p>{lang === "hr" ? "Broj:" : "Phone:"} 091/567-7933</p>
           <p>E-mail: lukac.toni@gmail.com</p>
         </div>
       </div>
@@ -36,6 +41,10 @@ const Footer = () => {
           src="https://maps.google.com/maps?q=43.5308837,16.489286&hl=en-US&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
         ></iframe>
       </div> */}
+
+      <s className="footer-copyright">
+        ©2022 NETO d.o.o. All rights reserved Built by NETO d.o.o.
+      </s>
     </div>
   );
 };

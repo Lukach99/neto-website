@@ -1,4 +1,10 @@
-import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 import "./index.scss";
 
@@ -33,19 +39,13 @@ const GalleryModal = ({ modalHandler, imageIndex, imageList }: Props) => {
     }
   };
 
-  /* useEffect(() => {
-    setTimeout(() => {
-      setImageIndexActive((state) => state + 1);
-    }, 2000);
-  }, [imageIndexActive]);
- */
   const modal = (
     <div className="modal-container " onClick={closeModal}>
       <p className="modal-container-imgCounter">{`${imageIndexActive + 1} / ${
         imageList.length
       }`}</p>
       <button className="modal-container-closeBtn" onClick={closeModal}>
-        x
+        <FontAwesomeIcon icon={faXmark} />
       </button>
 
       <div
@@ -53,13 +53,13 @@ const GalleryModal = ({ modalHandler, imageIndex, imageList }: Props) => {
         onClick={(event) => event.stopPropagation()}
       >
         <button className="modal-container-btn" onClick={imageLeftHandler}>
-          {"<"}
+          <FontAwesomeIcon icon={faAngleLeft} />
         </button>
         <div className="modal-display">
           <img src={imageList[imageIndexActive]} alt="" />
         </div>
         <button className="modal-container-btn" onClick={imageRightHandler}>
-          {">"}
+          <FontAwesomeIcon icon={faAngleRight} />
         </button>
       </div>
     </div>

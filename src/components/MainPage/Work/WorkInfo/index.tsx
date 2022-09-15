@@ -1,6 +1,6 @@
 import "./index.scss";
 
-const Service = ({ title, imgSrc, description }: Props) => {
+const WorkInfo = ({ title, imgSrc, description }: Props) => {
   return (
     <div className="service">
       <div className="service-name">
@@ -18,4 +18,4 @@ type Props = {
   description: string;
 };
 
-export default Service;
+export default WorkInfo;

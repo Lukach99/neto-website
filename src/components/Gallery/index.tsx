@@ -25,7 +25,6 @@ const Gallery = () => {
   const [error, setError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const ref: any = useRef(null);
-
   const { lang, setLang } = useContext(LangContext);
 
   const imagesListMemo: string[] = useMemo(() => {
@@ -91,7 +90,7 @@ const Gallery = () => {
 
       {isLoading && <div className="loading"></div>}
 
-      {error && (
+      {error && !isLoading && (
         <p className="error-message">
           {lang === "hr"
             ? "Trenutno imamo tehničkih poteškoća. Molimo vas pokušajte kasnije!"
